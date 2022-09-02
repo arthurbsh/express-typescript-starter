@@ -1,23 +1,33 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import status from './routes/status';
+import users from './routes/users';
 
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 8080;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
-});
+app.use(express.json());
+
+const port = process.env.PORT || 8080; // Port that the app runs
+
+
+
+
 
 app.use('/status', status);
 
-// your own error handler
+app.use('/users', users);
+
+
+
+
+// error handling
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     // Your error handler logic
 });
 
+// This starts the server
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
 });

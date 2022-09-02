@@ -1,0 +1,3 @@
+/books : reponsible for managing books
+/users : responsible for managing users
+/status : response for telling the current status of the server
